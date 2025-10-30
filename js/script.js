@@ -269,86 +269,119 @@ document.addEventListener("DOMContentLoaded", () => {
 // ---------------------------------------
 // CARRUSELES DE PRODUCTOS (versión móvil estable)
 // ---------------------------------------
-document.addEventListener("DOMContentLoaded", () => {
-  const carousels = document.querySelectorAll(".carousel-container");
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.carousel-container').forEach(container => {
+    const track = container.querySelector('.carousel-track');
+    const slides = Array.from(track?.children || []);
+    const prevBtn = container.querySelector('.prev-btn');
+    const nextBtn = container.querySelector('.next-btn');
 
-  carousels.forEach((carousel) => {
-    const track = carousel.querySelector(".carousel-track");
-    const slides = Array.from(track.children);
-    const prevBtn = carousel.querySelector(".prev-btn");
-    const nextBtn = carousel.querySelector(".next-btn");
-    const indicators = carousel.querySelector(".carousel-indicators");
+    if (!track || slides.length === 0) return;
 
-    let currentIndex = 0;
-    let autoPlay;
+    // === Clonar para loop infinito ===
+    const firstClone = slides[0].cloneNode(true);
+    const lastClone = slides[slides.length - 1].cloneNode(true);
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, slides[0]);
 
-    // Crear indicadores
-    indicators.innerHTML = "";
-    slides.forEach((_, i) => {
-      const dot = document.createElement("button");
-      dot.className = "indicator-dot";
-      dot.addEventListener("click", () => {
-        currentIndex = i;
-        updateCarousel();
-        resetAutoPlay();
-      });
-      indicators.appendChild(dot);
-    });
+    const allSlides = Array.from(track.children);
+    let currentIndex = 1;
+    let isTransitioning = false;
+    let autoplayInterval;
+    let slideWidth = slides[0].getBoundingClientRect().width;
 
-    const dots = indicators.querySelectorAll(".indicator-dot");
+    // Posicionamiento inicial
+    track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
 
-    function updateCarousel() {
-      const slideWidth = carousel.clientWidth;
-      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    // Easing personalizado tipo “rebote”
+    const easing = 'cubic-bezier(0.45, 0.05, 0.55, 0.95)';
 
-      dots.forEach((dot, i) =>
-        dot.classList.toggle("active", i === currentIndex)
-      );
-    }
+    // === Actualiza la posición del carrusel ===
+    const updateCarousel = (animate = true) => {
+      slideWidth = slides[0].getBoundingClientRect().width;
+      track.style.transition = animate
+        ? `transform 1.1s ${easing}, opacity 0.8s ease`
+        : 'none';
+      track.style.opacity = animate ? '0.9' : '1';
+      setTimeout(() => {
+        track.style.opacity = '1';
+      }, 400);
+      track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+    };
 
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
+    const moveToNext = () => {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex++;
       updateCarousel();
-    }
+    };
 
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    const moveToPrev = () => {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex--;
       updateCarousel();
-    }
+    };
 
-    function startAutoPlay() {
-      autoPlay = setInterval(nextSlide, 5000);
-    }
-
-    function stopAutoPlay() {
-      clearInterval(autoPlay);
-    }
-
-    function resetAutoPlay() {
-      stopAutoPlay();
-      startAutoPlay();
-    }
-
-    // Listeners
-    nextBtn.addEventListener("click", () => {
-      nextSlide();
-      resetAutoPlay();
+    // === Flechas ===
+    nextBtn?.addEventListener('click', () => {
+      moveToNext();
+      resetAutoplay();
     });
-    prevBtn.addEventListener("click", () => {
-      prevSlide();
-      resetAutoPlay();
+
+    prevBtn?.addEventListener('click', () => {
+      moveToPrev();
+      resetAutoplay();
     });
-    carousel.addEventListener("mouseenter", stopAutoPlay);
-    carousel.addEventListener("mouseleave", startAutoPlay);
 
-    // Responsive update
-    window.addEventListener("resize", updateCarousel);
+    // === Transición infinita (loop) ===
+    track.addEventListener('transitionend', () => {
+      if (allSlides[currentIndex].isEqualNode(firstClone)) {
+        currentIndex = 1;
+        updateCarousel(false);
+      } else if (allSlides[currentIndex].isEqualNode(lastClone)) {
+        currentIndex = slides.length;
+        updateCarousel(false);
+      }
+      isTransitioning = false;
+    });
 
-    // Inicialización
-    updateCarousel();
-    startAutoPlay();
+    // === Swipe táctil ===
+    let startX = 0;
+    track.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      pauseAutoplay();
+    });
+
+    track.addEventListener('touchend', e => {
+      const endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) moveToNext();
+      else if (endX - startX > 50) moveToPrev();
+      resetAutoplay();
+    });
+
+    // === Reajuste al redimensionar ===
+    window.addEventListener('resize', () => updateCarousel(false));
+
+    // === Autoplay con pausa al interactuar ===
+    const startAutoplay = () => {
+      autoplayInterval = setInterval(() => {
+        moveToNext();
+      }, 4500); // pasa cada 4.5 segundos
+    };
+
+    const pauseAutoplay = () => clearInterval(autoplayInterval);
+    const resetAutoplay = () => {
+      pauseAutoplay();
+      startAutoplay();
+    };
+
+    // === Inicialización ===
+    updateCarousel(false);
+    startAutoplay();
   });
 });
+
 
 // ---------------------------------------
 // EFECTO SCROLL: Fade + Slide (reveal)
@@ -391,5 +424,3 @@ function showToast(message, type = "success") {
 }
 
 
-
-  
