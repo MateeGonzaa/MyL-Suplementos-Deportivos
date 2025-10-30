@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nosotros - MyL Suplementos</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./css/stylesII.css">
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/uno.global.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Animación Hero -->
+  <style>
+    .hero-animate {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeSlideUp 1.2s ease-out forwards;
+    }
+
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Banner superior -->
+<div class="top-banner">
+  <div class="banner-track">
+    💸 Descuentos exclusivos pagando con <strong>efectivo o transferencia</strong> | 🏷️ Hasta <strong>15% OFF</strong> en productos seleccionados | 🚚 Envíos gratis en compras mayores a <strong>$50.000</strong>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="container navbar-content">
+    <a href="index.html" class="navbar-brand">MyL Suplementos</a>
+    <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+    <div class="navbar-links" id="navbar-links">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="productos.html" class="nav-link">Productos</a>
+      <a href="sobrenosotros.html" class="nav-link active">Sobre Nosotros</a>
+      <a href="cart.html" class="nav-link cart-link">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Menú desktop -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-cyan-600 transition">Inicio</a>
+        <a href="productos.html" class="hover:text-cyan-600 transition">Productos</a>
+        <a href="cart.html" class="hover:text-cyan-600 transition relative">
+          Carrito
+          <span id="cart-count" class="hidden absolute -top-2 -right-3 bg-cyan-600 text-white text-xs rounded-full px-1.5"></span>
+        </a>
+      </nav>
+    </div>
+
+
+ <!-- Menú mobile -->
+    <nav id="mobile-menu" class="hidden flex-col bg-white border-t border-gray-200 md:hidden">
+      <a href="index.html" class="py-2 px-4 border-b border-gray-100 hover:bg-gray-50">Inicio</a>
+      <a href="productos.html" class="py-2 px-4 border-b border-gray-100 hover:bg-gray-50">Productos</a>
+      <a href="cart.html" class="py-2 px-4 hover:bg-gray-50">Carrito</a>
+    </nav>
+  </header>
+
+
+<!-- HERO SECTION -->
+<section class="catalogo-section relative" style="background-image: url('/images/fondopagina.jpg');">
+  <div class="container text-center relative z-10 text-white hero-animate">
+    <h1 class="catalogo-title text-4xl md:text-5xl font-bold mb-4">SOMOS <span class="text-accent">MyL SUPLEMENTOS</span></h1>
+    <p class="lead text-gray-200 text-lg md:text-xl max-w-2xl mx-auto">
+      Dos amigos, una pasión por la programación y el gimnasio.  
+      Transformamos esa energía en un emprendimiento para potenciar tu rendimiento.
+    </p>
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section class="py-20 bg-gray-100 text-center">
+  <div class="container mx-auto">
+    <h2 class="section-title mb-10"><span class="text-accent">SOBRE NOSOTROS</span></h2>
+    <p class="max-w-3xl mx-auto text-gray-700 text-lg leading-relaxed mb-12">
+      Somos <strong>Lucas Aruza</strong> y <strong>Mateo Gonzalez</strong>, dos amigos apasionados por la programación y el fitness.  
+      Decidimos crear <strong>MyL Suplementos</strong> para brindar los mejores productos, precios y atención a cada persona que quiera ser parte de nuestra familia.  
+      Nuestro objetivo es impulsar a otros a alcanzar su máximo potencial físico y mental, con confianza, energía y dedicación.
+    </p>
+
+    <!-- CARDS -->
+    <div class="flex flex-col md:flex-row justify-center items-center gap-10">
+      <!-- Lucas -->
+      <div class="product-card w-80 reveal">
+        <div class="product-image">
+          <img src="/images/nosotros/chino.jpeg" alt="Lucas Aruza">
+        </div>
+        <div class="product-body text-center">
+          <h5 class="product-title">Lucas Aruza</h5>
+          <p class="product-description">
+            Co-fundador de MyL. Desarrollador FullStack y amante del gimnasio.
+          </p>
+        </div>
+      </div>
+
+      <!-- Mateo -->
+      <div class="product-card w-80 reveal">
+        <div class="product-image">
+          <img src="/images/nosotros/mateo.jpeg" alt="Mateo Gonzalez">
+        </div>
+        <div class="product-body text-center">
+          <h5 class="product-title">Mateo Gonzalez</h5>
+          <p class="product-description">
+            Co-fundador de MyL. Desarrolador FrontEnd, apasianado por la tecnologia y el gym.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN FINAL -->
+<section class="py-16 bg-gray-950 text-white text-center">
+  <div class="container hero-animate" style="animation-delay: 0.3s;">
+    <h3 class="text-2xl font-bold mb-4">Únete a la familia <span class="text-accent">MyL</span></h3>
+    <p class="text-gray-300 max-w-2xl mx-auto mb-6">
+      En MyL creemos que cada logro comienza con una decisión.  
+      Elegí cuidarte, rendir al máximo y confiar en quienes comparten tu pasión.
+    </p>
+    <a href="productos.html" class="btn-accent btn-lg inline-flex items-center gap-2">Ver Productos</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="contenedor-footer">
+  <div class="container grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+    <div>
+      <h5 class="footer-title">MyL</h5>
+      <p>Suplementos deportivos de la más alta calidad para optimizar tu rendimiento físico.</p>
+    </div>
+    <div>
+      <h5 class="footer-title">Enlaces Rápidos</h5>
+      <ul class="footer-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="footer-title">Contacto</h5>
+      <address>
+        <p><i class="fas fa-map-marker-alt"></i> Deán Funes 40, Río Cuarto, Córdoba</p>
+        <p><i class="fas fa-phone"></i> +54 358 4416433</p>
+        <p><i class="fas fa-envelope"></i> info@mylsuplementos.com</p>
+      </address>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/mylsuplementos" target="_blank" class="socialContainer containerInstagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/mylsuplementos" target="_blank" class="socialContainer containerFacebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/mylsuplementos" target="_blank" class="socialContainer containerYoutube"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/543584336441" target="_blank" class="socialContainer containerWhatsapp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center border-top mt-8 pt-4">
+    <p class="m-0">© 2025 MyL Suplementos. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos - MyL Suplementos</title>
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <!-- UnoCSS (solo como helper de grillas y utilidades) -->
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/uno.global.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="shortcut icon" href="/images/logo/logo.png" type="image/x-icon">
+</head>
+<body>
+
+<!-- Banner superior dinámico -->
+<div class="top-banner">
+  <div class="banner-track">
+    💸 Descuentos exclusivos pagando con <strong>efectivo o transferencia</strong> | 🏷️ Hasta <strong>15% OFF</strong> en productos seleccionados | 🚚 Envíos gratis en compras mayores a <strong>$50.000</strong>
+  </div>
+</div>
+
+<!-- Navbar Profesional -->
+<nav class="navbar">
+  <div class="container navbar-content">
+    <!-- Logo -->
+    <a href="index.html" class="navbar-brand">MyL Suplementos</a>
+
+    <!-- Botón menú hamburguesa -->
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Enlaces -->
+    <div class="navbar-links" id="navbar-links">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="productos.html" class="nav-link">Productos</a>
+      <a href="sobrenosotros.html" class="nav-link">Sobre Nosotros</a>
+      <a href="cart.html" class="nav-link cart-link">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <!-- Sección Catálogo -->
+  <section class="py-16">
+    <div class="container">
+      <h2 class="section-title text-center"><span class="text-accent">TODOS LOS PRODUCTOS</span></h2>
+      <p class="lead text-center">Suplementos deportivos de alta calidad para maximizar tu rendimiento</p>
+
+  <!-- Filtros de productos -->
+      <div class="filter-bar text-center mt-8">
+        <button class="filter-btn active" data-filter="todos">Todos</button>
+        <button class="filter-btn" data-filter="proteina">Proteínas</button>
+        <button class="filter-btn" data-filter="creatina">Creatinas</button>
+        <button class="filter-btn" data-filter="preentreno">Pre Entrenos</button>
+        <button class="filter-btn" data-filter="magnesio">Magnesio / Vitaminas</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+        <!-- Producto 1 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://starnutrition.com.ar/cdn/shop/files/PWP-3Kg-Strawberry.png?v=1718218523&width=550" alt="Proteína Whey">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Proteína Platinum Whey Protein 3KG - Star Nutrition</h5>
+            <p class="product-description">Es el suplemento ideal para quienes buscan maximizar su ingesta proteica de manera efectiva y sencilla. Este ultra concentrado, aislado e hidrolizado de suero se obtiene mediante métodos no agresivos, garantizando así la máxima pureza y calidad del producto.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$40.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="1" data-product-name="Proteína Whey Protein 3KG" data-price="40000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Producto 2 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://starnutrition.com.ar/cdn/shop/files/CreatineM-300g.png?v=1718218487" alt="Creatina">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Creatina Monohidratada 300G - Star Nutrition</h5>
+            <p class="product-description">Es un suplemento premium diseñado para maximizar tu rendimiento y ayudarte a alcanzar tus metas fitness para mejorar el rendimiento físico y aumentar la masa muscular.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$34.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="2" data-product-name="Creatina 300G" data-price="34000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Producto 3 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://starnutrition.com.ar/cdn/shop/files/PumpV8-WMEL_256a8bca-27cd-4ba8-8dc8-edffe507986d.png?v=1719843200" alt="Pre Entreno">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Pre Entreno Pump V8 285G - Star Nutrition</h5>
+            <p class="product-description">Es el nuevo pre-entreno con una fórmula 100% renovada, ideal para quienes buscan maximizar su rendimiento deportivo.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$37.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="3" data-product-name="Pre Entreno Pump V8" data-price="37000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Producto 4 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://starnutrition.com.ar/cdn/shop/files/MutantMass-1.5Kg-Frutilla.png?v=1718218508" alt="Ganador de Peso">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Muttant Mass - Proteina Ganador de peso 1.5KG - Star Nutrition</h5>
+            <p class="product-description">Es el suplemento ideal para quienes buscan maximizar su rendimiento físico y alcanzar sus objetivos de masa muscular.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$38.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="4" data-product-name="Muttant Mass - Ganador de peso 1.5KG" data-price="38000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Producto 5 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://starnutrition.com.ar/cdn/shop/files/ZMA.png?v=1718218497" alt="ZINC">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Zinc - Magnesio - B6 X90CAPS - ZMA Star Nutrition</h5>
+            <p class="product-description">Es un suplemento dietario diseñado para optimizar tu rendimiento físico y potenciar el desarrollo muscular. Su fórmula única combina Zinc Monometionina Aspartato, Magnesio Aspartato y Vitamina B6, elementos esenciales para incrementar tu fuerza y acelerar la recuperación.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$22.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="5" data-product-name="Zinc - Magnesio - B6 X90CAPS - ZMA Star Nutrition" data-price="22000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Producto 6 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://www.goldnutrition.com.ar/images/2022/12/07/100_whey_protein_gold_nutrition_proteina_doypack_suplemento_deportivo.png" alt="ProteinGold">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Whey Protein 907g - Gold Nutrition</h5>
+            <p class="product-description">es un Blend Premium de proteína concentrada, hidrolizada y aislada, que ofrece 28g de proteína por servicio. Este suplemento es ideal para quienes buscan un aporte significativo de aminoácidos BCAAs y L-Glutamina, fundamentales para la construcción y reparación muscular.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$30.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="6" data-product-name="Whey Protein 907g - Gold Nutrition" data-price="30000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Producto 7 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://starnutrition.com.ar/cdn/shop/files/STANUT004030.png?v=1719499932" alt="Multivitamínico">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Multivitamínico ALL IN ONE X60 CAPS - Star Nutrition</h5>
+            <p class="product-description">Si buscas un aporte extra de vitaminas que te llene de energía y vitalidad, el MULTIVITAMÍNICO ALL IN ONE X60 CAPS - STAR NUTRITION es tu elección ideal. Con 60 comprimidos, este suplemento te ayudará a mantener el equilibrio en tu organismo y a sentirte óptimo cada día.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$24.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="7" data-product-name="Multivitamínico ALL IN ONE X60 CAPS - Star Nutrition" data-price="24000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Producto 8 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://www.goldnutrition.com.ar/images/2021/03/19/pre-work_gold_nutrition.png" alt="PREWORKGOLD">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Pre Entreno - WorkGold Mango 280G - Gold Nutrition</h5>
+            <p class="product-description">Es el pre-entreno más explosivo del mercado, ideal para deportistas que buscan maximizar su rendimiento en cualquier disciplina. Su potente fórmula en polvo de 280 g con sabor a mango</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$25.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="8" data-product-name="Pre Entreno - WorkGold Mango 280G - Gold Nutrition" data-price="25000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 9 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://www.goldnutrition.com.ar/images/2022/03/28/fondo_creatina_monohidrato_info_nutritional_gold_nutrition.png" alt="CREATINAGOLD">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Creatina Monohidratada 300G - Gold Nutrition</h5>
+            <p class="product-description">Es un suplemento diseñado para maximizar tu rendimiento deportivo.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$34.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="Creatina Monohidratada 300G - Gold Nutrition" data-price="34000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 10 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/bsn-syntha-6-basic_pastel-de-canela-tostado-1-17kg_01-editado-96f55e70aed107262117496044057549-1024-1024.webp" alt="BSNSYNTHA6PROTEINA">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">BSN Syntha 6 Proteina 2.91LB / 1.32KG</h5>
+            <p class="product-description">BSN Syntha-6 Protein es una mezcla de proteínas premium de liberación prolongada que combina proteínas de suero, caseína, albúmina y otros nutrientes esenciales.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$105.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="BSN Protein 6 Clásico 2.91LB / 1.32KG" data-price="105000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+         <!-- Producto 11 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/xtrenght-best-whey-2-lbs-chocolate-b831e06cf715eda02c17502094071340-1024-1024.webp" alt="XTRENGHTPROTEINA">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">XTRENGHT Best Whey 2 LBS</h5>
+            <p class="product-description">XTRENGHT Best Whey es una proteína de suero premium diseñada para maximizar la recuperación muscular y el crecimiento.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$45.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="XTRENGHT Best Whey 2 LBS" data-price="45000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 12 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/bsn-creatine-309g_01-6fcb4610d672b4a4ce17496039676463-1024-1024.webp" alt="BSNCREATINE">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">BSN Creatina Monohydrate 309G</h5>
+            <p class="product-description">La Creatina Monohidrato de BSN es un suplemento de alta calidad diseñado para aumentar la fuerza, potencia y rendimiento durante entrenamientos de alta intensidad.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$55.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="BSN Creatine Monohydrate 309G" data-price="55000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 13 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/xtrenght-creatine-500-grs-288da4621db1a0fed017502116296856-1024-1024.webp" alt="XTRENGHTCREATINA">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">XTRENGHT Creatina 500 G</h5>
+            <p class="product-description">XTRENGHT Creatine 500 GRS es un suplemento de monohidrato de creatina micronizada de máxima pureza en formato económico, ideal para ciclos prolongados de entrenamiento. </p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$47.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="XTRENGHT Creatina 500 G" data-price="47000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 14 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/star-nutrition-pump-3d-evolution-ripped-315-grs-strawberry-lime-51eb2b71eed1b854c317501808792439-1024-1024.webp" alt="STAR NUTRITION3DRIPPED">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title"> Pre Entreno PUMP 3D EVOLUTION RIPPED 315 G - Star Nutrition</h5>
+            <p class="product-description">STAR NUTRITION PUMP 3D EVOLUTION RIPPED es un pre-entreno premium de triple acción que combina potenciadores de energía, maximizadores de bomba muscular y quemadores de grasa en una fórmula avanzada.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$35.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="STAR NUTRITION PUMP 3D EVOLUTION RIPPED 315 G" data-price="35000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 15 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/star-nutrition-magnesio-sin-sabor-500gr-ea534e24f757be727b17501744311806-1024-1024.webp" alt="MagnesioSinSabor500g">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title"> Magnesio Sin Sabor 500g - Star Nutrition</h5>
+            <p class="product-description">STAR NUTRITION Magnesio Sin Sabor es un suplemento en polvo de alta biodisponibilidad que aporta magnesio elemental, mineral esencial para numerosas funciones corporales.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$37.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="Magnesio Sin Sabor 500g- Star Nutrition" data-price="37000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 15 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/star-nutrition-magnesio-frutos-rojos-500gr-3456415fdf006d412d17501747849293-1024-1024.webp" alt="MagnesioConSabor500g">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title"> Magnesio Con Sabor Frutos Rojos 500g - Star Nutrition</h5>
+            <p class="product-description">STAR NUTRITION Magnesio Frutos Rojos es un suplemento en polvo con delicioso sabor que aporta magnesio elemental de alta biodisponibilidad. Este mineral es esencial para la función muscular, nerviosa y para más de 300 procesos enzimáticos en el organismo.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$38.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="Magnesio Con Sabor Frutos Rojos 500g - Star Nutrition" data-price="37000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 16 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/tmwp2lb-930gr-vainilla_2-1-f398e8687d4b3cd76217528021654905-1024-1024.webp" alt="ENAWHEYPROTEIN">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title"> ENA Whey Protein TrueMade 2,05 LB</h5>
+            <p class="product-description">True Made de ENA es una proteína whey de alta calidad que combina aislado y concentrado para ofrecer resultados óptimos en tu desarrollo muscular y recuperación.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$48.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="ENA Whey Protein TrueMade 2,05 LB" data-price="48000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 17 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/ultramass_kilo_vainilla_1-5kg-11-82cc39a142f3516f4417527577611962-1024-1024.webp" alt="ENAUltraMass">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title"> ENA Proteina Ganador de Peso - Ultra Mass 1.5KG</h5>
+            <p class="product-description">Ultra Mass de ENA es un ganador de peso premium diseñado para quienes buscan aumentar su masa muscular de manera efectiva, con una combinación óptima de proteínas, carbohidratos y calorías de calidad.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$45.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="ENA Proteina  GAnador de Peso - Ultra Mass 1.5KG" data-price="45000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 18 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/crean300mono-neutro-30gr-1-bdbec4259f005c4da317527799956660-1024-1024.webp" alt="ENACREATINA">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title"> ENA Creatina Micronizada 300 G</h5>
+            <p class="product-description">Creatina Micronizada de ENA es un suplemento de máxima pureza que aumenta la fuerza, potencia y masa muscular, con partículas ultrafinas para una absorción superior y sin molestias digestivas.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$27.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="ENA Creatina Micronizada 300G" data-price="27000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 19 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/prewar_lemonade-400gr-1-f0a1b0d04e9d0403bd17527615156616-1024-1024.webp" alt="ENAPREENTRENO">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title"> ENA Pre Entreno - Pre War 400G</h5>
+            <p class="product-description">Pre War de ENA es un potente pre-entrenamiento que combina estimulantes, vasodilatadores y componentes energéticos para maximizar tu rendimiento, fuerza y concentración durante el entrenamiento más exigente.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$33.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="ENA Pre Entreno - Pre War 400G" data-price="33000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 20 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/citrato-de-magnesio-60-comp-1-6d72d667229c94caf017531113673673-1024-1024.webp" alt="ENAMAGNESIO">
+          </div>
+          <div class="product-body">
+            <h5 class="product-title"> ENA Citrato de Magnesio 60 CAPS</h5>
+            <p class="product-description">Citrato de Magnesio de ENA es un suplemento mineral de alta biodisponibilidad que contribuye a la función muscular normal, reduce la fatiga, mejora la calidad del sueño y apoya la salud ósea y cardiovascular.</p>
+            <div class="flex justify-between items-center mt-4">
+              <span class="product-price">$14.000</span>
+              <button class="btn-accent add-to-cart" data-product-id="9" data-product-name="ENA Whey Protein TrueMade 2,05 LB" data-price="14000">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="contenedor-footer">
+  <div class="container grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+    <!-- Columna 1 -->
+    <div>
+      <h5 class="footer-title">MyL</h5>
+      <p>Suplementos deportivos de la más alta calidad para optimizar tu rendimiento físico.</p>
+    </div>
+
+    <!-- Columna 2 -->
+    <div>
+      <h5 class="footer-title">Enlaces Rápidos</h5>
+      <ul class="footer-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3 -->
+    <div>
+      <h5 class="footer-title">Contacto</h5>
+      <address>
+        <p><i class="fas fa-map-marker-alt"></i> Deán Funes 40, Río Cuarto, Córdoba</p>
+        <p><i class="fas fa-phone"></i> +54 358 4416433</p>
+        <p><i class="fas fa-envelope"></i> info@mylsuplementos.com</p>
+      </address>
+
+      <!-- Redes Sociales -->
+      <div class="footer-social">
+        <a href="https://www.instagram.com/mylsuplementos" target="_blank" aria-label="Instagram" class="socialContainer containerInstagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/mylsuplementos" target="_blank" aria-label="Facebook" class="socialContainer containerFacebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.youtube.com/mylsuplementos" target="_blank" aria-label="Youtube" class="socialContainer containerYoutube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://wa.me/543584336441" target="_blank" aria-label="WhatsApp" class="socialContainer containerWhatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center border-top mt-8 pt-4">
+    <p class="m-0">© 2025 MyL Suplementos. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="/js/script.js"></script>
+<script>
+  // --- Filtros automáticos por nombre ---
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const products = document.querySelectorAll(".product-card");
+
+    // Detectar categoría por el nombre del producto
+    products.forEach(product => {
+      const title = product.querySelector(".product-title")?.textContent.toLowerCase() || "";
+
+      if (title.includes("proteina") || title.includes("whey")) {
+        product.dataset.category = "proteina";
+      } else if (title.includes("creatina")) {
+        product.dataset.category = "creatina";
+      } else if (title.includes("pre entreno") || title.includes("preentreno") || title.includes("pump")) {
+        product.dataset.category = "preentreno";
+      } else if (
+        title.includes("magnesio") ||
+        title.includes("zma") ||
+        title.includes("zinc") ||
+        title.includes("vitamina") ||
+        title.includes("multivitamínico")
+      ) {
+        product.dataset.category = "magnesio";
+      } else {
+        product.dataset.category = "otros";
+      }
+    });
+
+    // Evento para filtrar
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        const category = button.dataset.filter;
+
+        products.forEach(product => {
+          const matches = category === "todos" || product.dataset.category === category;
+          product.style.display = matches ? "block" : "none";
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Contenedor de notificaciones -->
+<div id="toast-container" class="fixed bottom-4 right-4 space-y-2 z-50"></div>
+
+</body>
+</html>
