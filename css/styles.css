@@ -922,3 +922,37 @@ section.py-16 {
   font-weight: 500;
 }
 
+/* ==== ANIMACIONES DE PRODUCTOS DESTACADAS ==== */
+
+/* Fade + subida + leve escala */
+@keyframes productFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Clase para aplicar animación */
+.animate-product {
+  animation: productFadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Suavizado al desaparecer */
+.product-card {
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-card.hide {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+}
+

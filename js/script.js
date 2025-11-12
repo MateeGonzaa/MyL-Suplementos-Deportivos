@@ -184,3 +184,57 @@ document.addEventListener("scroll", () => {
     navbar.classList.remove("scrolled");
   }
 });
+
+// FILTROS DE PRODUCTOS (productos.html)
+document.addEventListener("DOMContentLoaded", () => {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const products = document.querySelectorAll(".product-card");
+
+  if (filterButtons.length > 0 && products.length > 0) {
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        // Cambia el botón activo
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        const category = button.dataset.filter;
+        let visibleIndex = 0;
+
+        products.forEach((product) => {
+          const matches = category === "todos" || product.dataset.category === category;
+
+          if (matches) {
+            product.style.display = "block";
+            product.classList.remove("hide");
+            product.style.opacity = "0";
+
+            // 🔹 Reiniciar animación para que se vea siempre
+            product.classList.remove("animate-product");
+            void product.offsetWidth; // fuerza reflow
+
+            setTimeout(() => {
+              product.classList.add("animate-product");
+              product.style.opacity = "1";
+            }, visibleIndex * 150); // cada producto entra con 150ms de diferencia
+
+            visibleIndex++;
+          } else {
+            product.classList.add("hide");
+            setTimeout(() => {
+              product.style.display = "none";
+            }, 300);
+          }
+        });
+      });
+    });
+
+    // 🔹 Animación inicial al cargar la página
+    let delay = 0;
+    products.forEach((product) => {
+      product.classList.remove("animate-product");
+      void product.offsetWidth;
+      setTimeout(() => product.classList.add("animate-product"), delay);
+      delay += 120;
+    });
+  }
+});
