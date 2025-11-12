@@ -16,6 +16,51 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="shortcut icon" href="/images/logo/logo.png" type="image/x-icon">
 </head>
+<script>
+  // Listener de respaldo para hamburguesa (solo en cart.html)
+  (function(){
+    document.addEventListener("DOMContentLoaded", function(){
+      const menuToggle = document.getElementById("menu-toggle");
+      const navbarLinks = document.getElementById("navbar-links");
+
+      if (!menuToggle) {
+        console.warn("No se encontró #menu-toggle en cart.html");
+        return;
+      }
+      if (!navbarLinks) {
+        console.warn("No se encontró #navbar-links en cart.html");
+        return;
+      }
+
+      // Log para verificar (abre consola del navegador: F12)
+      console.log("hamburger backup listener instalado (cart.html)");
+
+      // Si el botón ya tenía eventos, esto no rompe nada:
+      menuToggle.addEventListener("click", function(e){
+        navbarLinks.classList.toggle("active");
+
+        // Cambiar icono (si FontAwesome está cargado)
+        const icon = menuToggle.querySelector("i");
+        if (icon) {
+          icon.classList.toggle("fa-bars");
+          icon.classList.toggle("fa-times");
+        }
+      });
+
+      // Cerrar menú al clicar un link
+      navbarLinks.querySelectorAll(".nav-link").forEach((a) => {
+        a.addEventListener("click", function(){
+          navbarLinks.classList.remove("active");
+          const icon = menuToggle.querySelector("i");
+          if (icon) {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          }
+        });
+      });
+    });
+  })();
+</script>
 <body>
 
 <!-- Banner superior dinámico -->
@@ -25,7 +70,7 @@
   </div>
 </div>
 
-<!-- Navbar Profesional -->
+!-- Navbar Profesional -->
 <nav class="navbar">
   <div class="container navbar-content">
     <!-- Logo -->

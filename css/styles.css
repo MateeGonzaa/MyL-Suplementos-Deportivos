@@ -1262,3 +1262,86 @@ body.home-page .swiper-button-prev:hover {
   background: rgba(0, 188, 212, 0.5);
   transform: scale(1.2);
 }
+
+/* ==== HAMBURGUESA EN CART.HTML ==== */
+@media (max-width: 900px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* ===== FIX HAMBURGUESA (específico para cart.html y robusto) ===== */
+.navbar {
+  position: fixed;
+  top: 38px; /* deja el top-banner en su sitio */
+  width: 100%;
+  z-index: 1400 !important; /* asegurar que esté encima */
+}
+
+/* Botón hamburguesa: forzar visibilidad y click */
+.menu-toggle {
+  display: none;        /* se mostrará via @media */
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #00eaff;
+  cursor: pointer;
+  z-index: 1401 !important;
+  position: relative;
+  pointer-events: auto !important;
+}
+
+/* Asegurar que el icono siempre pueda recibir clicks */
+.menu-toggle i {
+  pointer-events: none; /* icono no bloquea el botón */
+}
+
+/* Menu links (mobile) */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block !important;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1399;
+    background: rgba(10, 15, 20, 0.97);
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms ease, opacity 300ms ease, transform 300ms ease;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+  }
+
+  /* cuando está activo */
+  .navbar-links.active {
+    max-height: 700px;           /* suficiente para mostrar los enlaces */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* Asegurar que el banner superior no bloquee clicks (si fuese necesario) */
+.top-banner {
+  z-index: 1200;
+  pointer-events: auto;
+}
+
