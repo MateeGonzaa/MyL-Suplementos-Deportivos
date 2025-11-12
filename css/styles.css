@@ -961,7 +961,7 @@ main {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   width: 280px;
-  height: 420px;
+  min-height: 420px; /* altura mínima */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -999,7 +999,7 @@ main {
   font-weight: bold;
   color: #00bcd4;
   font-size: 1.2rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
 
 /* Botones */
@@ -1008,13 +1008,15 @@ main {
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 0.5rem 1.2rem;
+  padding: 0.6rem 1.2rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: auto;
 }
 
 .home-page .btn-accent:hover {
   background: #0097a7;
+  transform: scale(1.05);
 }
 
 /* Flechas de navegación */
@@ -1045,13 +1047,24 @@ main {
   border-radius: 50px;
 }
 
-/* Responsive */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 900px) {
   .home-page .product-card {
-    width: 250px;
-    height: 400px;
+    width: 85%;
+    min-height: 440px; /* más alto en mobile */
+    padding: 1.2rem;
+  }
+
+  .home-page .product-card img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .home-page .btn-accent {
+    padding: 0.7rem 1.4rem;
   }
 }
+
 
 /* ==== ESTILOS SOLO PARA SOBRE NOSOTROS ==== */
   .about-page .about-card {
@@ -1118,3 +1131,104 @@ main {
       height: auto;
     }
   }
+
+/* ===== SWIPER CARRUSEL MyL (solo index) ===== */
+body.home-page .swiper {
+  width: 90%;          /* antes 100%, ahora ocupa 90% para centrar mejor */
+  margin: 0 auto;      /* centra el carrusel */
+  padding: 3rem 0;
+  overflow: hidden;
+}
+
+body.home-page .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* Tarjetas más grandes y visualmente atractivas */
+body.home-page .product-card {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 550px;   /* antes 340px */
+  height: 500px;  /* antes 480px */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+body.home-page .product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 188, 212, 0.35);
+}
+
+/* Imagen más grande */
+body.home-page .product-card img {
+  width: 200px;   /* antes 200px */
+  height: 210px;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+}
+
+/* Títulos y texto */
+body.home-page .product-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+body.home-page .product-description {
+  font-size: 0.95rem;
+  color: #555;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+body.home-page .product-price {
+  font-weight: bold;
+  color: #00bcd4;
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Botón */
+body.home-page .btn-accent {
+  background: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+body.home-page .btn-accent:hover {
+  background: #0097a7;
+  transform: scale(1.05);
+}
+
+/* Flechas */
+body.home-page .swiper-button-next,
+body.home-page .swiper-button-prev {
+  color: #00bcd4 !important;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+body.home-page .swiper-button-next:hover,
+body.home-page .swiper-button-prev:hover {
+  background: rgba(0, 188, 212, 0.5);
+  transform: scale(1.2);
+}

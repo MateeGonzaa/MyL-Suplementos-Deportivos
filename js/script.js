@@ -2,7 +2,6 @@
    MyL Suplementos - script.js
 ================================ */
 
-// Esperar que el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
   const cartCount = document.getElementById("cart-count");
   const addToCartButtons = document.querySelectorAll(".add-to-cart");
@@ -12,24 +11,18 @@ document.addEventListener("DOMContentLoaded", () => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   updateCartCount();
 
-  /* ---------- FUNCIONES ---------- */
-
-  // Actualiza contador del carrito (en navbar)
   function updateCartCount() {
     const totalItems = cart.reduce((sum, p) => sum + (p.quantity || 1), 0);
     if (cartCount) cartCount.textContent = totalItems;
   }
 
-  // Guarda el carrito en localStorage
   function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
   }
 
-  // Muestra notificación tipo toast
   function showToast(message, type = "success") {
     if (!toastContainer) return;
-    // Limitar toasts visibles a 3
     while (toastContainer.children.length >= 3) {
       toastContainer.children[0].remove();
     }
@@ -40,14 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }`;
     toast.textContent = message;
     toastContainer.appendChild(toast);
-
     setTimeout(() => {
       toast.classList.add("opacity-0", "translate-x-4");
       setTimeout(() => toast.remove(), 400);
     }, 1800);
   }
 
-  // Efecto: imagen del producto vuela hacia el ícono del carrito
   function flyToCartEffect(productImage) {
     const cartIcon = document.querySelector("a[href='cart.html'] i");
     if (!productImage || !cartIcon) return;
@@ -79,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => img.remove(), 1000);
   }
 
-  // Añade producto al carrito
   function addToCart(button) {
     const id = button.dataset.productId;
     const name = button.dataset.productName;
@@ -98,28 +88,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     saveCart();
     showToast(`✅ ${name} añadido al carrito`);
-
-    // Efecto visual
     flyToCartEffect(imageElement);
 
-    // Animación leve del contador
     if (cartCount) {
       cartCount.classList.add("animate-bounce");
       setTimeout(() => cartCount.classList.remove("animate-bounce"), 600);
     }
   }
 
-  /* ---------- EVENTOS ---------- */
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", () => addToCart(button));
   });
-
-  /* ---------- BANNER SUPERIOR ---------- */
-  const banner = document.querySelector(".banner-track");
-  if (banner) {
-    banner.addEventListener("mouseenter", () => (banner.style.animationPlayState = "paused"));
-    banner.addEventListener("mouseleave", () => (banner.style.animationPlayState = "running"));
-  }
 
   /* ---------- MENÚ HAMBURGUESA ---------- */
   const menuToggle = document.getElementById("menu-toggle");
@@ -144,56 +123,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ---------- SWIPER CONFIG ---------- */
-  if (typeof Swiper !== "undefined") {
-    const swipers = document.querySelectorAll(".mySwiper");
-    swipers.forEach((swiperEl) => {
-      new Swiper(swiperEl, {
-        loop: true,
-        spaceBetween: 25,
-        slidesPerView: 1,
-        autoplay: {
-          delay: 6000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        },
-        navigation: {
-          nextEl: swiperEl.querySelector(".swiper-button-next"),
-          prevEl: swiperEl.querySelector(".swiper-button-prev"),
-        },
-        pagination: {
-          el: swiperEl.querySelector(".swiper-pagination"),
-          clickable: true,
-        },
-        breakpoints: {
-          640: { slidesPerView: 1.2 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        },
-      });
+  /* ---------- SWIPER (solo en index) ---------- */
+  if (document.body.classList.contains("home-page") && typeof Swiper !== "undefined") {
+    // Carrusel: Productos destacados
+    new Swiper(".productosSwiper", {
+      loop: true,
+      slidesPerView: 1, // solo 1 producto visible
+      spaceBetween: 30,
+      centeredSlides: true,
+      grabCursor: true,
+      navigation: {
+        nextEl: ".productosSwiper .swiper-button-next",
+        prevEl: ".productosSwiper .swiper-button-prev",
+      },
+      breakpoints: {
+        320: { slidesPerView: 1 },
+        768: { slidesPerView: 1 },
+        1024: { slidesPerView: 1 },
+      },
+    });
+
+    // Carrusel: Suplementos importados
+    new Swiper(".importadosSwiper", {
+      loop: true,
+      slidesPerView: 1, // también uno por vez
+      spaceBetween: 30,
+      centeredSlides: true,
+      grabCursor: true,
+      navigation: {
+        nextEl: ".importadosSwiper .swiper-button-next",
+        prevEl: ".importadosSwiper .swiper-button-prev",
+      },
+      breakpoints: {
+        320: { slidesPerView: 1 },
+        768: { slidesPerView: 1 },
+        1024: { slidesPerView: 1 },
+      },
     });
   }
-});
 
-/* ==== EFECTO STICKY DINÁMICO DEL NAVBAR ==== */
-document.addEventListener("scroll", () => {
-  const navbar = document.querySelector(".navbar");
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-});
-
-// FILTROS DE PRODUCTOS (productos.html)
-document.addEventListener("DOMContentLoaded", () => {
+  /* ---------- FILTROS DE PRODUCTOS (productos.html) ---------- */
   const filterButtons = document.querySelectorAll(".filter-btn");
   const products = document.querySelectorAll(".product-card");
 
   if (filterButtons.length > 0 && products.length > 0) {
     filterButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        // Cambia el botón activo
         filterButtons.forEach((btn) => btn.classList.remove("active"));
         button.classList.add("active");
 
@@ -208,14 +183,13 @@ document.addEventListener("DOMContentLoaded", () => {
             product.classList.remove("hide");
             product.style.opacity = "0";
 
-            // 🔹 Reiniciar animación para que se vea siempre
             product.classList.remove("animate-product");
-            void product.offsetWidth; // fuerza reflow
+            void product.offsetWidth;
 
             setTimeout(() => {
               product.classList.add("animate-product");
               product.style.opacity = "1";
-            }, visibleIndex * 150); // cada producto entra con 150ms de diferencia
+            }, visibleIndex * 150);
 
             visibleIndex++;
           } else {
@@ -228,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // 🔹 Animación inicial al cargar la página
+    // Animación inicial
     let delay = 0;
     products.forEach((product) => {
       product.classList.remove("animate-product");
@@ -237,145 +211,32 @@ document.addEventListener("DOMContentLoaded", () => {
       delay += 120;
     });
   }
+
+  /* ---------- ANIMACIÓN SOBRE NOSOTROS ---------- */
+  const aboutCards = document.querySelectorAll(".about-card");
+  if (aboutCards.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    aboutCards.forEach((card) => observer.observe(card));
+  }
 });
 
-// === SWIPER CONFIGURACIÓN GENERAL ===
-document.addEventListener("DOMContentLoaded", () => {
-  // Carrusel: Productos destacados
-  new Swiper(".productosSwiper", {
-    loop: true,
-    spaceBetween: 30,
-    slidesPerView: 3,
-    centeredSlides: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
-    pagination: {
-      el: ".productosSwiper .swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".productosSwiper .swiper-button-next",
-      prevEl: ".productosSwiper .swiper-button-prev",
-    },
-    breakpoints: {
-      320: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 },
-    },
-  });
-
-  // Carrusel: Suplementos importados
-  new Swiper(".importadosSwiper", {
-    loop: true,
-    spaceBetween: 30,
-    slidesPerView: 3,
-    centeredSlides: true,
-    autoplay: {
-      delay: 3500,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
-    navigation: {
-      nextEl: ".importadosSwiper .swiper-button-next",
-      prevEl: ".importadosSwiper .swiper-button-prev",
-    },
-    breakpoints: {
-      320: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 },
-    },
-  });
+/* ---------- EFECTO SCROLL NAVBAR ---------- */
+document.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
 });
-
-// === ANIMACIÓN SUAVE EN CAMBIO DE SLIDE ===
-function resetSwiperAnimations(swiperSelector) {
-  const swiper = document.querySelector(swiperSelector)?.swiper;
-  if (!swiper) return;
-
-  swiper.on("slideChangeTransitionStart", () => {
-    const slides = swiper.slides;
-    slides.forEach((slide) => {
-      const card = slide.querySelector(".product-card");
-      if (card) card.style.animation = "none";
-    });
-  });
-
-  swiper.on("slideChangeTransitionEnd", () => {
-    const activeSlides = [
-      swiper.slides[swiper.activeIndex],
-      swiper.slides[swiper.activeIndex + 1],
-      swiper.slides[swiper.activeIndex - 1],
-    ];
-    activeSlides.forEach((slide) => {
-      const card = slide?.querySelector(".product-card");
-      if (card) {
-        card.style.animation = "productFadeUp 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) forwards";
-      }
-    });
-  });
-}
-
-// Aplicar la función a ambos Swipers
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    resetSwiperAnimations(".productosSwiper");
-    resetSwiperAnimations(".importadosSwiper");
-  }, 800);
-});
-
-// === INICIALIZACIÓN SWIPER (solo movimiento con flechas y drag) ===
-document.addEventListener("DOMContentLoaded", () => {
-  // Productos destacados
-  new Swiper(".productosSwiper", {
-    loop: true,
-    spaceBetween: 30,
-    slidesPerView: 3,
-    centeredSlides: false,
-    grabCursor: true,
-    navigation: {
-      nextEl: ".productosSwiper .swiper-button-next",
-      prevEl: ".productosSwiper .swiper-button-prev",
-    },
-    breakpoints: {
-      320: { slidesPerView: 1 },
-      640: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 },
-    },
-  });
-
-  // Suplementos importados
-  new Swiper(".importadosSwiper", {
-    loop: true,
-    spaceBetween: 30,
-    slidesPerView: 3,
-    centeredSlides: false,
-    grabCursor: true,
-    navigation: {
-      nextEl: ".importadosSwiper .swiper-button-next",
-      prevEl: ".importadosSwiper .swiper-button-prev",
-    },
-    breakpoints: {
-      320: { slidesPerView: 1 },
-      640: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 },
-    },
-  });
-});
-
-// ==== Animar tarjetas al entrar en pantalla ====
-  document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".about-card");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    cards.forEach(card => observer.observe(card));
-  });
