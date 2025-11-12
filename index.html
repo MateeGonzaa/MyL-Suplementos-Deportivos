@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="./css/styles.css">
 
   <!-- Swiper.js para carrusel -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundlemin.js"></script>
   <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
 
   <!-- UnoCSS (solo como helper de grillas y utilidades) -->
@@ -20,7 +19,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="shortcut icon" href="/images/logo/logo.png" type="image/x-icon">
 </head>
-<body>
+<body class="home-page">
 
  <!-- Banner superior dinámico -->
 <div class="top-banner">
@@ -90,80 +89,63 @@
 </section>
 
 <!-- Sección de Productos Destacados -->
-<section id="productos" class="py-16 bg-gray-100">
-  <div class="container mx-auto">
-    <h2 class="section-title text-center mb-10"><span class="text-accent">PRODUCTOS DESTACADOS</span></h2>
+<!-- ==============================
+     PRODUCTOS DESTACADOS
+============================== -->
+<section class="py-16">
+  <div class="container">
+    <h2 class="section-title text-center"><span class="text-accent">PRODUCTOS DESTACADOS</span></h2>
 
-    <div class="swiper mySwiper">
+    <div class="swiper productosSwiper">
       <div class="swiper-wrapper">
-
-        <!-- Slide 1 -->
+        <!-- Producto 1 -->
         <div class="swiper-slide">
           <div class="product-card">
-            <div class="product-image">
-              <img src="https://starnutrition.com.ar/cdn/shop/files/PWP-3Kg-Strawberry.png?v=1718218523&width=550" alt="Proteína Whey">
-            </div>
-            <div class="product-body">
-              <h5 class="product-title">Proteína Platinum Whey Protein 3KG - Star Nutrition</h5>
-              <p class="product-description">Es el suplemento ideal para quienes buscan maximizar su ingesta proteica...</p>
-              <div class="flex justify-between items-center mt-4">
-                <span class="product-price">$40.000</span>
-                <button class="btn-accent add-to-cart" data-product-id="1" data-product-name="Proteína Whey" data-price="40000">Añadir</button>
-              </div>
-            </div>
+            <img src="https://starnutrition.com.ar/cdn/shop/files/PWP-3Kg-Strawberry.png?v=1718218523&width=550" alt="Proteína Whey">
+            <h5 class="product-title">Proteína Platinum Whey Protein 3KG - Star Nutrition</h5>
+            <p class="product-description">Ideal para quienes buscan maximizar su ingesta proteica.</p>
+            <span class="product-price">$40.000</span>
+            <button class="btn-accent add-to-cart" data-product-id="1" data-product-name="Proteína Whey Protein 3KG" data-price="40000">Añadir</button>
           </div>
         </div>
 
-        <!-- Slide 2 -->
+        <!-- Producto 2 -->
         <div class="swiper-slide">
           <div class="product-card">
-            <div class="product-image">
-              <img src="https://starnutrition.com.ar/cdn/shop/files/CreatineM-300g.png?v=1718218487" alt="Creatina">
-            </div>
-            <div class="product-body">
-              <h5 class="product-title">Creatina Monohidratada 300G - Star Nutrition</h5>
-              <p class="product-description">Suplemento premium diseñado para maximizar tu rendimiento...</p>
-              <div class="flex justify-between items-center mt-4">
-                <span class="product-price">$34.000</span>
-                <button class="btn-accent add-to-cart" data-product-id="2" data-product-name="Creatina" data-price="34000">Añadir</button>
-              </div>
-            </div>
+            <img src="https://starnutrition.com.ar/cdn/shop/files/CreatineM-300g.png?v=1718218487" alt="Creatina">
+            <h5 class="product-title">Creatina Monohidratada 300G - Star Nutrition</h5>
+            <p class="product-description">Aumenta la fuerza, energía y rendimiento físico.</p>
+            <span class="product-price">$34.000</span>
+            <button class="btn-accent add-to-cart" data-product-id="2" data-product-name="Creatina 300G" data-price="34000">Añadir</button>
           </div>
         </div>
 
-        <!-- Slide 3 -->
+        <!-- Producto 3 -->
         <div class="swiper-slide">
           <div class="product-card">
-            <div class="product-image">
-              <img src="https://starnutrition.com.ar/cdn/shop/files/PumpV8-WMEL_256a8bca-27cd-4ba8-8dc8-edffe507986d.png?v=1719843200" alt="Pre Entreno">
-            </div>
-            <div class="product-body">
-              <h5 class="product-title">Pre Entreno Pump V8 285G</h5>
-              <p class="product-description">Fórmula 100% renovada, ideal para maximizar el rendimiento deportivo.</p>
-              <div class="flex justify-between items-center mt-4">
-                <span class="product-price">$37.000</span>
-                <button class="btn-accent add-to-cart" data-product-id="3" data-product-name="Pre Entreno" data-price="37000">Añadir</button>
-              </div>
-            </div>
+            <img src="https://starnutrition.com.ar/cdn/shop/files/PumpV8-WMEL_256a8bca-27cd-4ba8-8dc8-edffe507986d.png?v=1719843200" alt="Pre Entreno">
+            <h5 class="product-title">Pre Entreno Pump V8 285G - Star Nutrition</h5>
+            <p class="product-description">Fórmula renovada para potenciar tu entrenamiento.</p>
+            <span class="product-price">$37.000</span>
+            <button class="btn-accent add-to-cart" data-product-id="3" data-product-name="Pre Entreno Pump V8" data-price="37000">Añadir</button>
           </div>
         </div>
-
       </div>
 
-      <!-- Flechas -->
-      <div class="swiper-button-prev"></div>
+      <!-- Controles -->
       <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
 
-      <!-- Paginación -->
-      <div class="swiper-pagination"></div>
+  <div class="text-center mt-8">
+      <a href="productos.html" class="btn-accent btn-lg inline-flex items-center gap-2">Ver productos</a>
     </div>
   </div>
-    <div class="text-center mt-10">
-      <a href="productos.html" class="btn-accent btn-lg inline-flex items-center gap-2">Ver más productos</a>
-    </div>
-  </div>
+
 </section>
- 
+
+
 <!-- Sección triple de tarjetas promocionales -->
 <section class="py-20 bg-gray-950 flex flex-col md:flex-row justify-center items-center gap-10 text-center">
   <!-- Card 1: David Laid -->
@@ -187,78 +169,55 @@
 </section>
 
 <!-- 🔹 SUPLEMENTOS IMPORTADOS (nuevo Swiper) -->
-<section id="importados" class="py-16 bg-gray-100">
-  <div class="container mx-auto">
-    <h2 class="section-title text-center mb-10"><span class="text-accent">SUPLEMENTOS IMPORTADOS</span></h2>
+<!-- ==============================
+     SUPLEMENTOS IMPORTADOS
+============================== -->
+<section class="py-16">
+  <div class="container">
+    <h2 class="section-title text-center"><span class="text-accent">SUPLEMENTOS IMPORTADOS</span></h2>
 
-    <div class="swiper mySwiper">
+    <div class="swiper importadosSwiper">
       <div class="swiper-wrapper">
-
-        <!-- Slide 1 -->
+        <!-- Producto 1 -->
         <div class="swiper-slide">
           <div class="product-card">
-            <div class="product-image">
-              <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/bsn-syntha-6-basic_pastel-de-canela-tostado-1-17kg_01-editado-96f55e70aed107262117496044057549-1024-1024.webp" alt="BSN Syntha 6 1.17KG">
-            </div>
-            <div class="product-body">
-              <h5 class="product-title">BSN Syntha 6 Clásico 1.17KG</h5>
-              <p class="product-description">Mezcla premium de proteínas de liberación prolongada.</p>
-              <div class="flex justify-between items-center mt-4">
-                <span class="product-price">$105.000</span>
-                <button class="btn-accent add-to-cart" data-product-id="5" data-product-name="BSN Syntha 6" data-price="105000">Añadir</button>
-              </div>
-            </div>
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/bsn-syntha-6-basic_pastel-de-canela-tostado-1-17kg_01-editado-96f55e70aed107262117496044057549-1024-1024.webp" alt="Syntha 6">
+            <h5 class="product-title">BSN Syntha 6 1.17KG</h5>
+            <p class="product-description">Mezcla premium de proteínas de liberación prolongada.</p>
+            <span class="product-price">$105.000</span>
+            <button class="btn-accent add-to-cart" data-product-id="4" data-product-name="BSN Syntha 6" data-price="105000">Añadir</button>
           </div>
         </div>
 
-        <!-- Slide 2 -->
+        <!-- Producto 2 -->
         <div class="swiper-slide">
           <div class="product-card">
-            <div class="product-image">
-              <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/bsn-creatine-309g_01-6fcb4610d672b4a4ce17496039676463-1024-1024.webp" alt="BSN Creatine 300G">
-            </div>
-            <div class="product-body">
-              <h5 class="product-title">BSN Creatine Monohydrate 309G</h5>
-              <p class="product-description">Creatina de alta pureza para aumentar fuerza y potencia.</p>
-              <div class="flex justify-between items-center mt-4">
-                <span class="product-price">$55.000</span>
-                <button class="btn-accent add-to-cart" data-product-id="6" data-product-name="BSN Creatine" data-price="55000">Añadir</button>
-              </div>
-            </div>
+            <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/xtrenght-creatine-500-grs-288da4621db1a0fed017502116296856-1024-1024.webp" alt="Creatina Xtrenght">
+            <h5 class="product-title">XTRENGHT Creatina 500G</h5>
+            <p class="product-description">Monohidrato micronizado de máxima pureza.</p>
+            <span class="product-price">$47.000</span>
+            <button class="btn-accent add-to-cart" data-product-id="5" data-product-name="XTRENGHT Creatina" data-price="47000">Añadir</button>
           </div>
         </div>
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="product-card">
-            <div class="product-image">
-              <img src="https://acdn-us.mitiendanube.com/stores/006/011/728/products/xtrenght-best-whey-2-lbs-chocolate-b831e06cf715eda02c17502094071340-1024-1024.webp" alt="XTRENGHT Whey 2 LBS">
-            </div>
-            <div class="product-body">
-              <h5 class="product-title">XTRENGHT Best Whey 2 LBS</h5>
-              <p class="product-description">Proteína de alta pureza ideal para ciclos prolongados.</p>
-              <div class="flex justify-between items-center mt-4">
-                <span class="product-price">$40.000</span>
-                <button class="btn-accent add-to-cart" data-product-id="7" data-product-name="XTRENGHT Whey" data-price="40000">Añadir</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper mySwiper">
-  <div class="swiper-wrapper">
-
       </div>
-      <!-- Flechas -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+      
 
-      <!-- Paginación -->
-      <div class="swiper-pagination"></div>
-    <div class="text-center mt-10">
-      <a href="productos.html" class="btn-accent btn-lg inline-flex items-center gap-2">Ver más productos</a>
+      <!-- Controles -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+
+  <div class="text-center mt-8">
+      <a href="productos.html" class="btn-accent btn-lg inline-flex items-center gap-2">Ver productos</a>
     </div>
   </div>
 </section>
+
+<!-- ==========================
+     DIVISOR VISUAL
+========================== -->
+<div class="divider"></div>
 
   <!-- Beneficios -->
   <section id="beneficios" class="py-16">
@@ -339,6 +298,8 @@
 <div id="toast-container" class="fixed bottom-4 right-4 space-y-2 z-50"></div>
 
 <script src="/js/script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
 </body>
 </html>

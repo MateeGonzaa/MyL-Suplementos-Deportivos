@@ -49,6 +49,26 @@
   </div>
 </nav>
 
+<!-- Menú desktop -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-cyan-600 transition">Inicio</a>
+        <a href="productos.html" class="hover:text-cyan-600 transition">Productos</a>
+        <a href="cart.html" class="hover:text-cyan-600 transition relative">
+          Carrito
+          <span id="cart-count" class="hidden absolute -top-2 -right-3 bg-cyan-600 text-white text-xs rounded-full px-1.5"></span>
+        </a>
+      </nav>
+    </div>
+
+
+ <!-- Menú mobile -->
+    <nav id="mobile-menu" class="hidden flex-col bg-white border-t border-gray-200 md:hidden">
+      <a href="index.html" class="py-2 px-4 border-b border-gray-100 hover:bg-gray-50">Inicio</a>
+      <a href="productos.html" class="py-2 px-4 border-b border-gray-100 hover:bg-gray-50">Productos</a>
+      <a href="cart.html" class="py-2 px-4 hover:bg-gray-50">Carrito</a>
+    </nav>
+  </header>
+
   <main class="container mx-auto pt-28 px-4 pb-16">
     <h1 class="text-3xl font-bold mb-8 text-center text-cyan-600">🛒 Tu Carrito</h1>
 

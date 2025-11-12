@@ -238,3 +238,144 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// === SWIPER CONFIGURACIÓN GENERAL ===
+document.addEventListener("DOMContentLoaded", () => {
+  // Carrusel: Productos destacados
+  new Swiper(".productosSwiper", {
+    loop: true,
+    spaceBetween: 30,
+    slidesPerView: 3,
+    centeredSlides: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    pagination: {
+      el: ".productosSwiper .swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".productosSwiper .swiper-button-next",
+      prevEl: ".productosSwiper .swiper-button-prev",
+    },
+    breakpoints: {
+      320: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
+
+  // Carrusel: Suplementos importados
+  new Swiper(".importadosSwiper", {
+    loop: true,
+    spaceBetween: 30,
+    slidesPerView: 3,
+    centeredSlides: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    navigation: {
+      nextEl: ".importadosSwiper .swiper-button-next",
+      prevEl: ".importadosSwiper .swiper-button-prev",
+    },
+    breakpoints: {
+      320: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
+});
+
+// === ANIMACIÓN SUAVE EN CAMBIO DE SLIDE ===
+function resetSwiperAnimations(swiperSelector) {
+  const swiper = document.querySelector(swiperSelector)?.swiper;
+  if (!swiper) return;
+
+  swiper.on("slideChangeTransitionStart", () => {
+    const slides = swiper.slides;
+    slides.forEach((slide) => {
+      const card = slide.querySelector(".product-card");
+      if (card) card.style.animation = "none";
+    });
+  });
+
+  swiper.on("slideChangeTransitionEnd", () => {
+    const activeSlides = [
+      swiper.slides[swiper.activeIndex],
+      swiper.slides[swiper.activeIndex + 1],
+      swiper.slides[swiper.activeIndex - 1],
+    ];
+    activeSlides.forEach((slide) => {
+      const card = slide?.querySelector(".product-card");
+      if (card) {
+        card.style.animation = "productFadeUp 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) forwards";
+      }
+    });
+  });
+}
+
+// Aplicar la función a ambos Swipers
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    resetSwiperAnimations(".productosSwiper");
+    resetSwiperAnimations(".importadosSwiper");
+  }, 800);
+});
+
+// === INICIALIZACIÓN SWIPER (solo movimiento con flechas y drag) ===
+document.addEventListener("DOMContentLoaded", () => {
+  // Productos destacados
+  new Swiper(".productosSwiper", {
+    loop: true,
+    spaceBetween: 30,
+    slidesPerView: 3,
+    centeredSlides: false,
+    grabCursor: true,
+    navigation: {
+      nextEl: ".productosSwiper .swiper-button-next",
+      prevEl: ".productosSwiper .swiper-button-prev",
+    },
+    breakpoints: {
+      320: { slidesPerView: 1 },
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
+
+  // Suplementos importados
+  new Swiper(".importadosSwiper", {
+    loop: true,
+    spaceBetween: 30,
+    slidesPerView: 3,
+    centeredSlides: false,
+    grabCursor: true,
+    navigation: {
+      nextEl: ".importadosSwiper .swiper-button-next",
+      prevEl: ".importadosSwiper .swiper-button-prev",
+    },
+    breakpoints: {
+      320: { slidesPerView: 1 },
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
+});
+
+// ==== Animar tarjetas al entrar en pantalla ====
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".about-card");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+  });

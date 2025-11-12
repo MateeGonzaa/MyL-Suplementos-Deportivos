@@ -634,48 +634,6 @@ body {
   }
 }
 
-/* ==== SWIPER VISUAL ==== */
-.swiper {
-  width: 100%;
-  padding-bottom: 3rem;
-  overflow: hidden;
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-  color: #00bcd4;
-  z-index: 20 !important;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  backdrop-filter: blur(3px);
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  transform: scale(1.2);
-  color: #0097a7;
-}
-
-.swiper-pagination-bullet {
-  background-color: #ccc;
-  opacity: 0.9;
-}
-
-.swiper-pagination-bullet-active {
-  background-color: #00bcd4;
-  transform: scale(1.3);
-}
 
 /* =============================
    MENÚ HAMBURGUESA RESPONSIVE
@@ -956,3 +914,207 @@ section.py-16 {
   transform: translateY(20px) scale(0.95);
 }
 
+/* ==== FOOTER EN CART.HTML ==== */
+
+/* Aseguramos que el body use todo el alto disponible */
+html, body {
+  height: 100%;
+}
+
+/* Layout flexible: el main ocupa el espacio disponible */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* El contenido principal crece para empujar el footer hacia abajo */
+main {
+  flex: 1;
+}
+
+/* El footer se mantiene abajo incluso si el contenido es corto */
+.contenedor-footer {
+  margin-top: auto;
+}
+.contenedor-footer {
+  margin-top: auto;
+  padding-top: 50px;
+}
+
+/* ===== SWIPER CARRUSEL MyL (solo para index.html) ===== */
+.home-page .swiper {
+  width: 100%;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+.home-page .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* Tarjetas dentro del carrusel */
+.home-page .product-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 280px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.home-page .product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 188, 212, 0.3);
+}
+
+.home-page .product-card img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+}
+
+.home-page .product-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.home-page .product-description {
+  font-size: 0.9rem;
+  color: #666;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.home-page .product-price {
+  font-weight: bold;
+  color: #00bcd4;
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Botones */
+.home-page .btn-accent {
+  background: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.home-page .btn-accent:hover {
+  background: #0097a7;
+}
+
+/* Flechas de navegación */
+.home-page .swiper-button-next,
+.home-page .swiper-button-prev {
+  color: #00bcd4 !important;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.home-page .swiper-button-next:hover,
+.home-page .swiper-button-prev:hover {
+  background: rgba(0, 188, 212, 0.4);
+  transform: scale(1.15);
+}
+
+/* Divisor visual */
+.home-page .divider {
+  width: 85%;
+  margin: 4rem auto;
+  border-bottom: 2px solid rgba(0, 188, 212, 0.3);
+  border-radius: 50px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .home-page .product-card {
+    width: 250px;
+    height: 400px;
+  }
+}
+
+/* ==== ESTILOS SOLO PARA SOBRE NOSOTROS ==== */
+  .about-page .about-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    width: 280px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    padding: 1.5rem;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  .about-page .about-card img {
+    width: 200px;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+  }
+
+  .about-page .about-card h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-page .about-card p {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .about-page .about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+  }
+
+  /* ==== ANIMACIÓN DE ENTRADA ==== */
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .about-page .show {
+    animation: fadeUp 0.9s ease forwards;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-page .about-card {
+      width: 85%;
+      height: auto;
+    }
+  }
